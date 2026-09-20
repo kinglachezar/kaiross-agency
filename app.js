@@ -17,10 +17,20 @@ document.getElementById('year').textContent = new Date().getFullYear();
   function validate(stepEl) {
     var ok = true;
     stepEl.querySelectorAll('[required]').forEach(function (el) {
-      var valid = el.checkValidity();
+      if (el.name === 'website') {
+        var v = el.value.trim().replace(/^https?:\/\//i, '');
+        el.value = v;
+      }
+      var valid = el.checkValidity() && el.value.trim() !== '';
       el.classList.toggle('invalid', !valid);
       if (!valid) ok = false;
     });
+    var err = stepEl.querySelector('.form-error');
+    if (err) err.hidden = ok;
+    if (!ok) {
+      var first = stepEl.querySelector('.invalid');
+      if (first) first.focus();
+    }
     return ok;
   }
 
