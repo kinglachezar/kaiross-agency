@@ -4,7 +4,7 @@ One-page static website for Kaiross Agency, a performance marketing agency. Live
 
 ## Stack
 
-Plain HTML and CSS. No build step.
+Plain HTML, CSS, and a small vanilla JS file for the multi-step application form. No build step. The form currently shows a confirmation state client-side only; wire it to a backend (Cloudflare Worker, Formspree, etc.) before using it for real leads.
 
 ## Deploy on Cloudflare Pages
 
